@@ -121,7 +121,7 @@ class MonoXSensor(SensorEntity, AnycubicUartEntityBase):
             if hasattr(response, "total_volume"):
                 self.set_attr_int(
                     _ATTR_PRINTVOL,
-                    int(response.total_volume.replace("~", "", 1).replace("mL", "", 1)),
+                    int(float(response.total_volume.replace("~", "", 1).replace("mL", "", 1))),
                 )
 
         self.hass.states.async_set(
